@@ -1,0 +1,1 @@
+Scaffold-DbContext "server=.\SQL2017;user=sa;password=Password1!;database=TEST_SALESF" Microsoft.EntityFrameworkCore.SqlServer -OutputDir NewEntities -Tables FCRMVH, FCRMVI
