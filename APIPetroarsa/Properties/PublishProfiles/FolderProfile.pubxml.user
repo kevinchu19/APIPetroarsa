@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+<<<<<<< HEAD
+    <_PublishTargetUrl>C:\Users\Administrator\source\repos\APIPetroarsa-master\APIPetroarsa\bin\Release\netcoreapp3.1\publish\</_PublishTargetUrl>
+    <History>True|2022-12-05T02:10:15.2354842Z;True|2022-08-10T15:13:56.2462055-03:00;True|2022-08-10T14:58:41.6793438-03:00;True|2022-07-11T23:37:33.6066239-03:00;True|2022-07-11T23:16:30.0810891-03:00;True|2022-01-03T17:06:46.2453927-03:00;</History>
+=======
+    <_PublishTargetUrl>C:\Users\dattaguest\source\repos\APIPetroarsaSoftland\APIPetroarsa\bin\Release\netcoreapp3.1\publish\</_PublishTargetUrl>
+    <History>True|2022-08-10T18:13:56.2462055Z;True|2022-08-10T14:58:41.6793438-03:00;True|2022-07-11T23:37:33.6066239-03:00;True|2022-07-11T23:16:30.0810891-03:00;True|2022-01-03T17:06:46.2453927-03:00;</History>
+>>>>>>> d6d083794cd8ba49b4af3697d96ba9612147ba0f
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Models/Response/BaseResponse.cs">
+      <publishTime>07/10/2022 22:13:27</publishTime>
+    </File>
+    <File Include="Models/Response/ComprobanteGenerado.cs">
+      <publishTime>07/10/2022 22:13:27</publishTime>
+    </File>
+    <File Include="Models/Response/FacturacionResponse.cs">
+      <publishTime>07/10/2022 22:28:38</publishTime>
+    </File>
+    <File Include="Models/Response/ImpuestosComprobanteGenerado.cs">
+      <publishTime>07/10/2022 22:13:27</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
