@@ -4,7 +4,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <History>True|2023-02-14T15:15:23.7720889Z;False|2023-02-14T12:14:17.3588626-03:00;False|2023-02-14T12:00:53.3332856-03:00;False|2023-02-14T12:00:29.9727737-03:00;False|2023-02-14T12:00:17.7487552-03:00;</History>
+    <History>True|2023-02-16T15:09:51.1857881Z;False|2023-02-16T12:09:20.8328480-03:00;True|2023-02-14T12:15:23.7720889-03:00;False|2023-02-14T12:14:17.3588626-03:00;False|2023-02-14T12:00:53.3332856-03:00;False|2023-02-14T12:00:29.9727737-03:00;False|2023-02-14T12:00:17.7487552-03:00;</History>
     <_PublishTargetUrl>C:\Users\Administrator\source\repos\APIPetroarsa-master\APIPetroarsa\bin\Release\netcoreapp3.1\publish\</_PublishTargetUrl>
   </PropertyGroup>
 </Project>

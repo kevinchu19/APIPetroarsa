@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Serilog;
-
+using Newtonsoft.Json;
 
 namespace ApiPetroarsa.Controllers
 {
@@ -40,8 +40,8 @@ namespace ApiPetroarsa.Controllers
         [HttpPost]
         public async Task<ActionResult<ContactoResponse>> Post([FromBody] ContactosDTO contacto)
         {
-            Logger.Information($"Se recibio posteo de nuevo contacto: {contacto.NumeroCliente} - {contacto.ApellidoNombre}");
-
+            
+            Logger.Information($"Se recibio posteo de nuevo contacto: {contacto.NumeroCliente} - {contacto.ApellidoNombre}: {JsonConvert.SerializeObject(contacto)} ");
 
 
             Vtmclc ContactoFormat = Mapper.Map<ContactosDTO, Vtmclc>(contacto);

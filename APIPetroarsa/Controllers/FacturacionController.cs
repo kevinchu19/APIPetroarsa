@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Serilog;
-
+using Newtonsoft.Json;
 
 namespace ApiPetroarsa.Controllers
 {
@@ -60,7 +60,7 @@ namespace ApiPetroarsa.Controllers
         [HttpPost]
         public async Task<ActionResult<FacturacionResponse>> Post([FromBody] FacturacionDTO pedido)
         {
-            Logger.Information($"Se recibio posteo de nuevo comprobante: {pedido.OrderId}");
+            Logger.Information($"Se recibio posteo de nuevo comprobante: {pedido.OrderId}: { JsonConvert.SerializeObject(pedido)}");
 
 
 

@@ -163,3 +163,4 @@ C:\Users\Administrator\source\repos\APIPetroarsa-master\APIPetroarsa\obj\Release
 C:\Users\Administrator\source\repos\APIPetroarsa-master\APIPetroarsa\obj\Release\netcoreapp3.1\OE.dll
 C:\Users\Administrator\source\repos\APIPetroarsa-master\APIPetroarsa\obj\Release\netcoreapp3.1\OE.pdb
 C:\Users\Administrator\source\repos\APIPetroarsa-master\APIPetroarsa\obj\Release\netcoreapp3.1\OE.genruntimeconfig.cache
+C:\Users\Administrator\source\repos\APIPetroarsa-master\APIPetroarsa\obj\Release\netcoreapp3.1\OE.csproj.AssemblyReference.cache
