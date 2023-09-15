@@ -23,6 +23,7 @@ namespace ApiPetroarsa.Entities
 
         public virtual DbSet<Vtmclh> Vtmclh { get; set; }
         public virtual DbSet<Grtpac> Grtpac { get; set; }
+        public virtual DbSet<Usr_Envslf> Usr_Envslf  { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -2707,6 +2708,75 @@ namespace ApiPetroarsa.Entities
                     .IsUnicode(false)
                     .HasColumnName("GRTPAC_USERID");
             });
+
+            modelBuilder.Entity<Usr_Envslf>(entity =>
+            {
+                entity.HasKey(e => e.Usr_Envslf_Nroide);
+
+                entity.ToTable("USR_ENVSLF");
+
+                entity.Property(e => e.Usr_Envslf_Nroide).HasColumnName("USR_ENVSLF_NROIDE");
+
+                
+                entity.Property(e => e.Usr_En_Debaja)
+                    .HasMaxLength(1)
+                    .IsUnicode(false)
+                    .HasColumnName("USR_EN_DEBAJA")
+                    .IsFixedLength(true);
+
+                entity.Property(e => e.Usr_En_Fecalt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("USR_EN_FECALT");
+
+                entity.Property(e => e.Usr_En_Fecmod)
+                    .HasColumnType("datetime")
+                    .HasColumnName("USR_EN_FECMOD");
+
+                entity.Property(e => e.Usr_En_Oalias)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("USR_EN_OALIAS");
+
+                entity.Property(e => e.Usr_En_Ultopr)
+                    .HasMaxLength(1)
+                    .IsUnicode(false)
+                    .HasColumnName("USR_EN_ULTOPR")
+                    .IsFixedLength(true);
+
+                entity.Property(e => e.Usr_En_Userid)
+                    .HasMaxLength(64)
+                    .IsUnicode(false)
+                    .HasColumnName("USR_EN_USERID");
+
+                entity.Property(e => e.Usr_Envslf_Codfor)
+                    .HasMaxLength(6)
+                    .IsUnicode(false)
+                    .HasColumnName("USR_ENVSLF_CODFOR");
+
+                entity.Property(e => e.Usr_Envslf_Dirmal)
+                    .HasMaxLength(255)
+                    .IsUnicode(false)
+                    .HasColumnName("USR_ENVSLF_DIRMAL");
+
+                entity.Property(e => e.Usr_Envslf_Enviad)
+                    .HasMaxLength(1)
+                    .IsUnicode(false)
+                    .HasColumnName("USR_ENVSLF_ENVIAD")
+                    .IsFixedLength(true);
+
+                entity.Property(e => e.Usr_Envslf_Mailvn)
+                    .HasMaxLength(255)
+                    .IsUnicode(false)
+                    .HasColumnName("USR_ENVSLF_MAILVN");
+
+                entity.Property(e => e.Usr_Envslf_Modfor)
+                    .HasMaxLength(6)
+                    .IsUnicode(false)
+                    .HasColumnName("USR_ENVSLF_MODFOR");
+
+                entity.Property(e => e.Usr_Envslf_Nrofor).HasColumnName("USR_ENVSLF_NROFOR");
+            });
+
 
 
 

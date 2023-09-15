@@ -52,6 +52,8 @@ namespace ApiPetroarsa
 
             services.AddScoped<ContactoRepository>();
             services.AddScoped<CuentaCorrienteRepository>();
+            services.AddScoped<SendMailRepository>();
+            services.AddScoped<BonificacionRepository>();
 
             services.AddAutoMapper(configuration =>
             {
@@ -87,6 +89,7 @@ namespace ApiPetroarsa
                 .ForMember(dest => dest.Fcrmvi_Precio, opt => opt.MapFrom(src => src.Precio))
                 .ForMember(dest => dest.Fcrmvi_Pctbf1, opt => opt.MapFrom(src => src.Bonificacion1))
                 .ForMember(dest => dest.Fcrmvi_Pctbf2, opt => opt.MapFrom(src => src.Bonificacion2))
+                .ForMember(dest => dest.Fcrmvi_Pctbf3, opt => opt.MapFrom(src => src.Recargo))
                 .ForMember(dest => dest.Fcrmvi_Textos, opt => opt.MapFrom(src => src.Observaciones))
                 .ReverseMap();
 
@@ -104,6 +107,15 @@ namespace ApiPetroarsa
                 .ForMember(dest => dest.Vtmclc_Refcma, opt => opt.MapFrom(src => src.RecibeFacturaMail))
 
                .ReverseMap();
+
+                configuration.CreateMap<SendMailDTO, Usr_Envslf>()
+               .ForMember(dest => dest.Usr_Envslf_Modfor, opt => opt.MapFrom(src => src.moduloComprobante))
+               .ForMember(dest => dest.Usr_Envslf_Codfor, opt => opt.MapFrom(src => src.codigoComprobante))
+               .ForMember(dest => dest.Usr_Envslf_Nrofor, opt => opt.MapFrom(src => src.numeroComprobante))
+               .ForMember(dest => dest.Usr_Envslf_Dirmal, opt => opt.MapFrom(src => src.mailCliente))
+               .ForMember(dest => dest.Usr_Envslf_Mailvn, opt => opt.MapFrom(src => src.mailVendedor))
+               
+              .ReverseMap();
 
 
             }

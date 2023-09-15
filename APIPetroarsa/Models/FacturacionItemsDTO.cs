@@ -13,6 +13,7 @@ namespace ApiPetroarsa.Models
         public decimal Precio { get; set; }
         public decimal Bonificacion1 { get; set; }
         public decimal Bonificacion2 { get; set; }
+        public decimal? Recargo { get; set; }
         public string Observaciones { get; set; }
         public FcrmvhDTO Header { get; set; }
     }

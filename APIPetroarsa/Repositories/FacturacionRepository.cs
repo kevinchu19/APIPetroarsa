@@ -32,7 +32,7 @@ namespace ApiPetroarsa.Repositories
 
         public async Task<FacturacionResponse> GraboFacturacion(FcrmvhDTO pedido, string tipoOperacion)
         {
-            oFcrmvh = new FC_RR_FCRMVH("admin", Configuration["PasswordAdmin"], Configuration["CompanyName"], Configuration["PathLanguage"]);
+            oFcrmvh = new FC_RR_FCRMVH(Configuration["User"], Configuration["Password"], Configuration["CompanyName"], Configuration["PathLanguage"]);
 
             Vtmclh cliente = await Context.Vtmclh.Where(c => c.Vtmclh_Nrocta == pedido.Fcrmvh_Nrocta).FirstOrDefaultAsync();
             if (cliente == null)

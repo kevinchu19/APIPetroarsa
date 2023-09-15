@@ -14,5 +14,6 @@ namespace ApiPetroarsa.Models
         public decimal Fcrmvi_Pctbf1 { get; set; }
         public decimal Fcrmvi_Pctbf2 { get; set; }
         public string Fcrmvi_Textos { get; set; }
+        public string Fcrmvi_Pctbf3 { get; set; }
     }
 }
