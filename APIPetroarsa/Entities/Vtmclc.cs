@@ -25,5 +25,6 @@ namespace ApiPetroarsa.Entities
 
         public string Vtmclc_Oalias { get; set; }
         public string Usr_Vtmclc_Envisf { get; set; }
+        public string Usr_Vtmclc_Debaja { get; set; }
     }
 }

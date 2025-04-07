@@ -30,7 +30,7 @@ namespace ApiPetroarsa.Repositories
             Connectionstring = configuration.GetConnectionString("DefaultConnectionString");
         }
 
-        public async Task<SendMailResponse> GraboSendMail(Usr_Envslf SendMail)
+        public async Task<SendMailResponse<SendMailDTO>> GraboSendMail(Usr_Envslf SendMail)
         {
 
             SendMail.Usr_En_Fecmod = DateTime.Now;
@@ -42,7 +42,7 @@ namespace ApiPetroarsa.Repositories
             
             await Context.Usr_Envslf.AddAsync(SendMail);
             await Context.SaveChangesAsync();
-            return new SendMailResponse("OK", new SendMailDTO(), "Registro de envio de mail generado");
+            return new SendMailResponse<SendMailDTO>("OK", new SendMailDTO(), "Registro de envio de mail generado");
         }
        
     }

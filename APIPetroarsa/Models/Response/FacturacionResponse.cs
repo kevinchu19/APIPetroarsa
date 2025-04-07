@@ -6,11 +6,36 @@ using System.Threading.Tasks;
 
 namespace ApiPetroarsa.Models.Response
 {
-    public class FacturacionResponse : BaseResponse<ComprobanteGenerado>
+    public class FacturacionResponse<T>
     {
-        
-        public FacturacionResponse(string titulo, ComprobanteGenerado resource, string recurso) : base(titulo,resource, recurso) {}
-        public FacturacionResponse(string titulo, string message) : base(titulo, message) { }
+        public int Estado { get; set; }
+        public string Titulo { get; set; }
+        public string Mensaje { get; set; }
+        public T ComprobanteGenerado { get; set; }
 
+        public virtual bool ShouldSerializeComprobanteGenerado()
+        {
+            return (ComprobanteGenerado != null);
+        }
+
+
+        public FacturacionResponse(string titulo, T resource, string recurso)
+        {
+            Estado = 200;
+            Mensaje = $"{recurso} con éxito";
+            Titulo = titulo;
+            if (resource != null)
+            {
+                ComprobanteGenerado = resource;
+            }
+
+        }
+
+        public FacturacionResponse(string titulo, string message)
+        {
+            Estado = 400;
+            Mensaje = message;
+            Titulo = titulo;
+        }
     }
 }

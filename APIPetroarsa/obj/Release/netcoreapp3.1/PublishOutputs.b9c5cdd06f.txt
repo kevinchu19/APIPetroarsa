@@ -1,6 +1,7 @@
 C:\Users\ktchubinsky\source\repos\APIPetroarsa\APIPetroarsa\obj\Release\netcoreapp3.1\PubTmp\Out\OE.exe
 C:\Users\ktchubinsky\source\repos\APIPetroarsa\APIPetroarsa\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.Development.json
 C:\Users\ktchubinsky\source\repos\APIPetroarsa\APIPetroarsa\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.json
+C:\Users\ktchubinsky\source\repos\APIPetroarsa\APIPetroarsa\obj\Release\netcoreapp3.1\PubTmp\Out\Services\FieldMapFiles\Facturacion.json
 C:\Users\ktchubinsky\source\repos\APIPetroarsa\APIPetroarsa\obj\Release\netcoreapp3.1\PubTmp\Out\OE.dll
 C:\Users\ktchubinsky\source\repos\APIPetroarsa\APIPetroarsa\obj\Release\netcoreapp3.1\PubTmp\Out\OE.runtimeconfig.json
 C:\Users\ktchubinsky\source\repos\APIPetroarsa\APIPetroarsa\obj\Release\netcoreapp3.1\PubTmp\Out\OE.pdb

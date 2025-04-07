@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Newtonsoft.Json;
+using ApiPetroarsa.Services;
+using Microsoft.Extensions.Configuration;
 
 namespace ApiPetroarsa.Controllers
 {
@@ -27,13 +29,15 @@ namespace ApiPetroarsa.Controllers
         public ILogger Logger { get; }
         public IMapper Mapper { get; }
         public IWebHostEnvironment Env { get; }
+        public IConfiguration Configuration { get; }
 
-        public FacturacionController(FacturacionRepository repository, Serilog.ILogger logger, IMapper mapper, IWebHostEnvironment env)
+        public FacturacionController(FacturacionRepository repository, Serilog.ILogger logger, IMapper mapper, IWebHostEnvironment env, IConfiguration configuration)
         {
             Repository = repository;
             Logger = logger;
             Mapper = mapper;
             Env = env;
+            Configuration = configuration;
         }
 
 
@@ -58,9 +62,9 @@ namespace ApiPetroarsa.Controllers
         //    return factura;
         //}
         [HttpPost]
-        public async Task<ActionResult<FacturacionResponse>> Post([FromBody] FacturacionDTO pedido)
+        public async Task<ActionResult<ComprobanteResponse>> Post([FromBody] FacturacionDTO pedido)
         {
-            Logger.Information($"Se recibio posteo de nuevo comprobante: {pedido.OrderId}: { JsonConvert.SerializeObject(pedido)}");
+            Logger.Information($"Se recibio posteo de nuevo comprobante:4 {pedido.OrderId}: { JsonConvert.SerializeObject(pedido)}");
 
 
 
@@ -71,8 +75,8 @@ namespace ApiPetroarsa.Controllers
                 ModelState.AddModelError("Error", "Error de formato");
             }
 
-            FacturacionResponse response = await Repository.GraboFacturacion(facturacionFormat, "NEW");
-            
+            FacturacionResponse<ComprobanteGenerado> response = await Repository.GraboFacturacion(facturacionFormat, "NEW");
+
 
             if (response.Estado != 200)
             {
@@ -83,6 +87,52 @@ namespace ApiPetroarsa.Controllers
 
         }
 
-     
+        [HttpPost]
+        [Route("v2")]
+        public async Task<ActionResult<ComprobanteResponse>> PostV2([FromBody] FacturacionDTO pedido)
+        {
+
+            FieldMapper mapping = new FieldMapper();
+            if (!mapping.LoadMappingFile(AppDomain.CurrentDomain.BaseDirectory + @"\Services\FieldMapFiles\Facturacion.json"))
+            {
+                return BadRequest(new ComprobanteDTO((string?)pedido.GetType()
+                  .GetProperty("Identificador")
+                  .GetValue(pedido), "400", "Error de configuracion", "No se encontro el archivo de configuracion del endpoint", null));
+            };
+
+            string errorMessage = await Repository.ExecuteSqlInsertToTablaSAR(mapping.fieldMap,
+                                                                             pedido,
+                                                                             pedido.Identificador,
+                                                                             Configuration["Facturacion:JobName"]);
+            if (errorMessage != "")
+            {
+                return BadRequest(new ComprobanteResponse(new ComprobanteDTO(pedido.Identificador, "400", "Bad Request", errorMessage, null)));
+            };
+
+
+
+            return Ok(new ComprobanteResponse(new ComprobanteDTO(pedido.Identificador, "200", "OK", errorMessage, null)));
+
+        }
+
+        [HttpGet]
+        
+        [Route("{identificador}")]
+        public async Task<ActionResult<ComprobanteResponse>> GetFacturacion(string identificador)
+        {
+            ComprobanteResponse respuesta = await Repository.GetTransaccion(identificador, "SAR_FCRMVH");
+
+            switch (respuesta.response.status)
+            {
+                case "404":
+                    return NotFound(respuesta);
+                    break;
+                default:
+                    return Ok(respuesta);
+                    break;
+            }
+
+        }
+
     }
 }

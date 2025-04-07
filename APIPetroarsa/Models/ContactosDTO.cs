@@ -17,6 +17,7 @@ namespace ApiPetroarsa.Models
         public string Celular { get; set; }
         public string ReclamoFacturas { get; set; }
         public string RecibeFacturaMail { get; set; }
+        public bool Activo { get; set; }
 
     }
 }

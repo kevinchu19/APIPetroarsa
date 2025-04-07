@@ -80,6 +80,9 @@ namespace ApiPetroarsa
                 .ForMember(dest => dest.Virt_Cdent1, opt => opt.MapFrom(src => src.CodigoDireccionEntrega))
                 .ForMember(dest => dest.Fcrmvh_Telefn, opt => opt.MapFrom(src => src.Telefono))
                 .ForMember(dest => dest.Fcrmvh_Jurctd, opt => opt.MapFrom(src => src.JurisdiccionContado))
+                .ForMember(dest => dest.Fcrmvh_Coflis, opt => opt.MapFrom(src => src.Moneda))
+                .ForMember(dest => dest.Fcrmvh_Coffac, opt => opt.MapFrom(src => src.Moneda))
+                .ForMember(dest => dest.Fcrmvh_Cofdeu, opt => opt.MapFrom(src => src.Moneda))
                 .ReverseMap();
 
                 configuration.CreateMap < FacturacionItemsDTO, FcrmviDTO > ()
@@ -97,14 +100,25 @@ namespace ApiPetroarsa
                 configuration.CreateMap<ContactosDTO, Vtmclc>()
                 .ForMember(dest => dest.Vtmclc_Nrocta, opt => opt.MapFrom(src => src.NumeroCliente))
                 .ForMember(dest => dest.Vtmclc_Codcon, opt => opt.MapFrom(src => src.ApellidoNombre))
+
                 .ForMember(dest => dest.Vtmclc_Puesto, opt => opt.MapFrom(src => src.Puesto))
                 .ForMember(dest => dest.Vtmclc_Observ, opt => opt.MapFrom(src => src.Observacion))
                 .ForMember(dest => dest.Vtmclc_Tipsex, opt => opt.MapFrom(src => src.Sexo))
                 .ForMember(dest => dest.Vtmclc_Direml, opt => opt.MapFrom(src => src.Email))
                 .ForMember(dest => dest.Vtmclc_Telint, opt => opt.MapFrom(src => src.Telefono))
                 .ForMember(dest => dest.Vtmclc_Celula, opt => opt.MapFrom(src => src.Celular))
-                .ForMember(dest => dest.Vtmclc_Recfac, opt => opt.MapFrom(src => src.ReclamoFacturas))
                 .ForMember(dest => dest.Vtmclc_Refcma, opt => opt.MapFrom(src => src.RecibeFacturaMail))
+               //KT 19/8/2024=> Mail Pilar Diaz
+               // Buen dia chicos, ¿Cómo están?
+
+               // Disculpen por la demora, pero como charlamos el lunes para asegurar que las bases de datos de contactos de salesforce y softland se mantengan iguales, es necesario que agreguemos a la integración existente la posibilidad de deshabilitar contactos.
+
+               // Desde Salesforce debiéramos disponer de un campo check que refleje si el contacto esta activo o no.El perfil vendedor u otro que no sea administrador, no debiera poder eliminar contactos.
+
+               //Desde softland, al recibir de salesforce esta indicación, en caso de deshabilitarlo, dicho contacto no debiera tener tildado el campo de recibir facturas y además, que su nombre indique que es un contacto “INACTIVO”
+                .ForMember(dest => dest.Vtmclc_Recfac, opt => opt.MapFrom(src => src.Activo?src.ReclamoFacturas:"N"))
+                .ForMember(dest => dest.Usr_Vtmclc_Debaja, opt => opt.MapFrom(src => src.Activo ? "N" : "S"))
+
 
                .ReverseMap();
 

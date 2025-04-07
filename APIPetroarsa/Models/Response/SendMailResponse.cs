@@ -6,11 +6,38 @@ using System.Threading.Tasks;
 
 namespace ApiPetroarsa.Models.Response
 {
-    public class SendMailResponse : BaseResponse<SendMailDTO>
+    public class SendMailResponse<T>
     {
-        
-        public SendMailResponse(string titulo, SendMailDTO resource, string recurso) : base(titulo,resource, recurso) {}
-        public SendMailResponse(string titulo, string message) : base(titulo, message) { }
+
+        public int Estado { get; set; }
+        public string Titulo { get; set; }
+        public string Mensaje { get; set; }
+        public T ComprobanteGenerado { get; set; }
+
+        public virtual bool ShouldSerializeComprobanteGenerado()
+        {
+            return (ComprobanteGenerado != null);
+        }
+
+
+        public SendMailResponse(string titulo, T resource, string recurso)
+        {
+            Estado = 200;
+            Mensaje = $"{recurso} con éxito";
+            Titulo = titulo;
+            if (resource != null)
+            {
+                ComprobanteGenerado = resource;
+            }
+
+        }
+
+        public SendMailResponse(string titulo, string message)
+        {
+            Estado = 400;
+            Mensaje = message;
+            Titulo = titulo;
+        }
 
     }
 }

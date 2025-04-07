@@ -38,7 +38,7 @@ namespace ApiPetroarsa.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<SendMailResponse>> Post([FromBody] SendMailDTO SendMail)
+        public async Task<ActionResult<SendMailResponse<SendMailDTO>>> Post([FromBody] SendMailDTO SendMail)
         {
             
             Logger.Information($"Se recibio posteo de nuevo SendMail: {SendMail.codigoComprobante} - {SendMail.numeroComprobante}: {JsonConvert.SerializeObject(SendMail)} ");
@@ -51,7 +51,7 @@ namespace ApiPetroarsa.Controllers
                 ModelState.AddModelError("Error", "Error de formato");
             }
 
-            SendMailResponse response = await Repository.GraboSendMail(SendMailFormat);
+            SendMailResponse<SendMailDTO> response = await Repository.GraboSendMail(SendMailFormat);
             
 
             if (response.Estado != 200)

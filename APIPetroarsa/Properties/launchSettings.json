@@ -14,9 +14,7 @@
       "launchUrl": "api/cliente",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "ancmHostingModel": "OutOfProcess",
-      "use64Bit": false
+      }
     },
     "ApiPetroarsa": {
       "commandName": "Project",
