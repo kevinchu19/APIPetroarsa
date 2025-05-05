@@ -17,6 +17,9 @@ namespace ApiPetroarsa.Models
         public string Fcrmvh_Deposi { get; set; }
         public string Fcrmvh_Sector { get; set; } = "U";
         public string Fcrmvh_Codlis { get; set; }
+        public string Fcrmvh_Coflis { get; set; }
+        public string Fcrmvh_Cofdeu { get; set; }
+        public string Fcrmvh_Coffac { get; set; }
         public string Fcrmvh_Textos { get; set; }
         public string Fcrmvh_Nombre { get; set; }
         public string Fcrmvh_Direcc { get; set; }

@@ -45,7 +45,7 @@ namespace ApiPetroarsa.Helpers
             logger.Fatal(errorMessage);
 
 
-            FacturacionResponse response = new FacturacionResponse("","") { };
+            FacturacionResponse<ComprobanteGenerado> response = new FacturacionResponse<ComprobanteGenerado>("","") { };
 
 
             switch (context.Exception.GetType().ToString())

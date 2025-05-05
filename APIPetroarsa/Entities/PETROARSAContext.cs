@@ -1821,6 +1821,10 @@ namespace ApiPetroarsa.Entities
                     .IsUnicode(false)
                     .HasColumnName("VTMCLC_TIPSEX");
 
+                entity.Property(e => e.Usr_Vtmclc_Debaja)
+                  .HasMaxLength(1)
+                  .IsUnicode(false)
+                  .HasColumnName("USR_VTMCLC_DEBAJA");
 
                 entity.Property(e => e.Vtmclc_Ultopr)
                     .HasMaxLength(1)

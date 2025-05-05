@@ -30,14 +30,14 @@ namespace ApiPetroarsa.Repositories
             Connectionstring = configuration.GetConnectionString("DefaultConnectionString");
         }
 
-        public async Task<ContactoResponse> GraboContacto(Vtmclc contacto)
+        public async Task<ContactoResponse<ContactosDTO>> GraboContacto(Vtmclc contacto)
         {
 
             Vtmclh cliente = await Context.Vtmclh.Where(c => c.Vtmclh_Nrocta == contacto.Vtmclc_Nrocta).FirstOrDefaultAsync();
 
             if (cliente ==null)
             {
-                return new ContactoResponse("Bad Request", $"El cliente {contacto.Vtmclc_Nrocta} no existe");
+                return new ContactoResponse<ContactosDTO>("Bad Request", $"El cliente {contacto.Vtmclc_Nrocta} no existe");
             }
 
             contacto.Vtmclc_Fecmod = DateTime.Now;
@@ -58,7 +58,7 @@ namespace ApiPetroarsa.Repositories
                 
                 await Context.SaveChangesAsync();
                 
-                return new ContactoResponse("Ok", new ContactosDTO(), $"El contacto fue actualizado");
+                return new ContactoResponse<ContactosDTO>("Ok", new ContactosDTO(), $"El contacto fue actualizado");
             }
 
             contacto.Vtmclc_Fecalt = DateTime.Now;
@@ -66,7 +66,7 @@ namespace ApiPetroarsa.Repositories
             
             await Context.Vtmclc.AddAsync(contacto);
             await Context.SaveChangesAsync();
-            return new ContactoResponse("OK", new ContactosDTO(), "Contacto generado");
+            return new ContactoResponse<ContactosDTO>("OK", new ContactosDTO(), "Contacto generado");
         }
        
     }

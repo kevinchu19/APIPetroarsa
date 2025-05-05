@@ -8,12 +8,7 @@ namespace ApiPetroarsa.Models.Response
 {
     public class ComprobanteGenerado
     {
-        [JsonIgnore]
-        public string ModuloComprobante { get; set; }
-        public string CodigoComprobante { get; set; }
-        public int NumeroComprobante { get; set; }
-        //public List<ImpuestosComprobanteGenerado> Impuestos { get; set; } = new List<ImpuestosComprobanteGenerado>();
-        //public decimal? ImporteTotal{ get; set; }
-            
+        public string? codigocomprobante { get; set; }
+        public Int64? numerocomprobante { get; set; }
     }
 }

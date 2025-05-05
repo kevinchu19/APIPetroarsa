@@ -38,10 +38,11 @@ namespace ApiPetroarsa.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<ContactoResponse>> Post([FromBody] ContactosDTO contacto)
+        public async Task<ActionResult<ContactoResponse<ContactosDTO>>> Post([FromBody] ContactosDTO contacto)
         {
             
             Logger.Information($"Se recibio posteo de nuevo contacto: {contacto.NumeroCliente} - {contacto.ApellidoNombre}: {JsonConvert.SerializeObject(contacto)} ");
+
 
 
             Vtmclc ContactoFormat = Mapper.Map<ContactosDTO, Vtmclc>(contacto);
@@ -51,7 +52,7 @@ namespace ApiPetroarsa.Controllers
                 ModelState.AddModelError("Error", "Error de formato");
             }
 
-            ContactoResponse response = await Repository.GraboContacto(ContactoFormat);
+            ContactoResponse<ContactosDTO> response = await Repository.GraboContacto(ContactoFormat);
             
 
             if (response.Estado != 200)

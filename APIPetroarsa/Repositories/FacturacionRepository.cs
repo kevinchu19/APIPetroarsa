@@ -30,14 +30,14 @@ namespace ApiPetroarsa.Repositories
             Connectionstring = configuration.GetConnectionString("DefaultConnectionString");
         }
 
-        public async Task<FacturacionResponse> GraboFacturacion(FcrmvhDTO pedido, string tipoOperacion)
+        public async Task<FacturacionResponse<ComprobanteGenerado>> GraboFacturacion(FcrmvhDTO pedido, string tipoOperacion)
         {
             oFcrmvh = new FC_RR_FCRMVH(Configuration["User"], Configuration["Password"], Configuration["CompanyName"], Configuration["PathLanguage"]);
 
             Vtmclh cliente = await Context.Vtmclh.Where(c => c.Vtmclh_Nrocta == pedido.Fcrmvh_Nrocta).FirstOrDefaultAsync();
             if (cliente == null)
             {
-                return new FacturacionResponse("Bad Request",  $"El cliente {pedido.Fcrmvh_Nrocta} no existe.");
+                return new FacturacionResponse<ComprobanteGenerado>("Bad Request", $"El cliente {pedido.Fcrmvh_Nrocta} no existe.");
             }
 
             oFcrmvh.instancioObjeto(tipoOperacion);
@@ -50,7 +50,7 @@ namespace ApiPetroarsa.Repositories
             {
                 string sErrorMessage = $"No existe un formulario asociado al deposito {pedido.Fcrmvh_Deposi}";
                 Logger.Warning(sErrorMessage);
-                return new FacturacionResponse("Bad Request", sErrorMessage);
+                return new FacturacionResponse<ComprobanteGenerado>("Bad Request", sErrorMessage);
             }
             oFcrmvh.asignoaTMWizard("VIRT_CODCFC", sCodfor, Logger);
 
@@ -97,7 +97,7 @@ namespace ApiPetroarsa.Repositories
 
             if (result == false)
             {
-                return new FacturacionResponse("Bad Request",  mensajeError);
+                return new FacturacionResponse<ComprobanteGenerado>("Bad Request",  mensajeError);
             }
 
 
@@ -109,7 +109,7 @@ namespace ApiPetroarsa.Repositories
             //                                                             PerformedOperation.ComprobanteGenerado.CodigoComprobante,
             //                                                           PerformedOperation.ComprobanteGenerado.NumeroComprobante);
 
-            return new FacturacionResponse("OK", PerformedOperation.ComprobanteGenerado, "Comprobante generado");
+            return new FacturacionResponse<ComprobanteGenerado>("OK", PerformedOperation.ComprobanteGenerado, "Comprobante generado");
         }
        
         //public async Task<decimal?> RecuperoTotalComprobante(string moduloComprobante, string codigoComprobante, int numeroComprobante)

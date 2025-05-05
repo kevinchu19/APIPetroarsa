@@ -266,14 +266,11 @@ namespace ApiPetroarsa.OE
                         string name = OEType.InvokeMember("Name", BindingFlags.GetProperty, null, oKey, null);
                         switch (name.Substring(name.Length-6,6))
                         {
-                            case "MODFOR":
-                                comprobanteGenerado.ModuloComprobante = OEType.InvokeMember("Value", BindingFlags.GetProperty, null, oKey, null);
-                                break;
                             case "CODFOR":
-                                comprobanteGenerado.CodigoComprobante = OEType.InvokeMember("Value", BindingFlags.GetProperty, null, oKey, null);
+                                comprobanteGenerado.codigocomprobante = OEType.InvokeMember("Value", BindingFlags.GetProperty, null, oKey, null);
                                 break;
                             case "NROFOR":
-                                comprobanteGenerado.NumeroComprobante = OEType.InvokeMember("Value", BindingFlags.GetProperty, null, oKey, null);
+                                comprobanteGenerado.numerocomprobante = OEType.InvokeMember("Value", BindingFlags.GetProperty, null, oKey, null);
                                 break;
                             default:
                                 break;

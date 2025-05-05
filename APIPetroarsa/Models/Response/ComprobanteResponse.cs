@@ -5,17 +5,13 @@ using System.Threading.Tasks;
 
 namespace ApiPetroarsa.Models.Response
 {
-    public class BaseResponse<T>
+    public class ComprobanteResponse : BaseResponse<ComprobanteDTO>
     {
-        public T response { get; set; }
 
-        public BaseResponse(T response)
+        public ComprobanteResponse(ComprobanteDTO response) : base(response)
         {
-            this.response = response;
+
         }
-
-
+        
     }
-
 }
-
