@@ -2112,11 +2112,6 @@ namespace ApiPetroarsa.Entities
                     .HasColumnName("VTMCLH_CONTAD")
                     .IsFixedLength(true);
 
-                entity.Property(e => e.Vtmclh_Copifc).HasColumnName("VTMCLH_COPIFC");
-
-                entity.Property(e => e.Vtmclh_Copist).HasColumnName("VTMCLH_COPIST");
-
-                entity.Property(e => e.Vtmclh_Copivt).HasColumnName("VTMCLH_COPIVT");
 
                 entity.Property(e => e.Vtmclh_Cuenta)
                     .HasMaxLength(40)
@@ -2147,8 +2142,6 @@ namespace ApiPetroarsa.Entities
                 entity.Property(e => e.Vtmclh_Difdes)
                     .HasColumnType("datetime")
                     .HasColumnName("VTMCLH_DIFDES");
-
-                entity.Property(e => e.Vtmclh_Difdia).HasColumnName("VTMCLH_DIFDIA");
 
                 entity.Property(e => e.Vtmclh_Difhas)
                     .HasColumnType("datetime")
@@ -2262,9 +2255,6 @@ namespace ApiPetroarsa.Entities
                     .IsUnicode(false)
                     .HasColumnName("VTMCLH_HORREC");
 
-                entity.Property(e => e.Vtmclh_Impdif)
-                    .HasColumnType("numeric(18, 2)")
-                    .HasColumnName("VTMCLH_IMPDIF");
 
                 entity.Property(e => e.Vtmclh_Inhibe)
                     .HasMaxLength(1)
@@ -2309,7 +2299,6 @@ namespace ApiPetroarsa.Entities
                     .IsUnicode(false)
                     .HasColumnName("VTMCLH_LOTTRA");
 
-                entity.Property(e => e.Vtmclh_Maxitm).HasColumnName("VTMCLH_MAXITM");
 
                 entity.Property(e => e.Vtmclh_Medpag)
                     .HasMaxLength(6)
@@ -2426,18 +2415,6 @@ namespace ApiPetroarsa.Entities
                     .HasMaxLength(3)
                     .IsUnicode(false)
                     .HasColumnName("VTMCLH_PAIENT");
-
-                entity.Property(e => e.Vtmclh_Perina)
-                    .HasColumnType("numeric(6, 0)")
-                    .HasColumnName("VTMCLH_PERINA");
-
-                entity.Property(e => e.Vtmclh_Prmipr)
-                    .HasColumnType("numeric(15, 7)")
-                    .HasColumnName("VTMCLH_PRMIPR");
-
-                entity.Property(e => e.Vtmclh_Prmxpr)
-                    .HasColumnType("numeric(15, 7)")
-                    .HasColumnName("VTMCLH_PRMXPR");
 
                 entity.Property(e => e.Vtmclh_Respon)
                     .HasMaxLength(60)

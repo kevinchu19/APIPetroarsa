@@ -60,9 +60,6 @@ namespace ApiPetroarsa.Entities
         public string Vtmclh_Codent { get; set; }
         public string Vtmclh_Jurent { get; set; }
         public string Vtmclh_Zonent { get; set; }
-        public short Vtmclh_Copivt { get; set; }
-        public short Vtmclh_Copifc { get; set; }
-        public short Vtmclh_Copist { get; set; }
         public string Vtmclh_Textos { get; set; }
         public string Vtmclh_Tipdo1 { get; set; }
         public string Vtmclh_Nrodo1 { get; set; }
@@ -79,12 +76,8 @@ namespace ApiPetroarsa.Entities
         public string Vtmclh_Contad { get; set; }
         public string Vtmclh_Edisub { get; set; }
         public string Vtmclh_Cuenta { get; set; }
-        public short? Vtmclh_Maxitm { get; set; }
-        public short? Vtmclh_Difdia { get; set; }
         public DateTime? Vtmclh_Difdes { get; set; }
         public DateTime? Vtmclh_Difhas { get; set; }
-        public decimal? Vtmclh_Perina { get; set; }
-        public decimal? Vtmclh_Impdif { get; set; }
         public string Vtmclh_Email { get; set; }
         public string Vtmclh_Cndint { get; set; }
         public string Vtmclh_Distri { get; set; }
@@ -94,8 +87,6 @@ namespace ApiPetroarsa.Entities
         public string Vtmclh_Oleole { get; set; }
         public string Vtmclh_Bmpbmp { get; set; }
         public string Vtmclh_Inhibe { get; set; }
-        public decimal? Vtmclh_Prmxpr { get; set; }
-        public decimal? Vtmclh_Prmipr { get; set; }
         public string Vtmclh_Trafcr { get; set; }
         public string Vtmclh_Codcof { get; set; }
         public string Vtmclh_Modcpt { get; set; }
