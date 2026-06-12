@@ -39,7 +39,13 @@ namespace ApiPetroarsa.Models
 
     }
 
-    public class AllowedMonedaAttribute : ValidationAttribute
+    public class EstadoPedidoDTO
+    {
+        public string Estado { get; set; }
+    }
+
+
+        public class AllowedMonedaAttribute : ValidationAttribute
     {
         private readonly string[] valoresPermitidos = { "ARS", "USD" };
 

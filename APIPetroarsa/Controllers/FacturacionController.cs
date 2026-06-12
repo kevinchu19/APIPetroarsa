@@ -134,5 +134,22 @@ namespace ApiPetroarsa.Controllers
 
         }
 
+        [HttpGet]
+
+        [Route("estado")]
+        public async Task<ActionResult<EstadoPedidoDTO>> GetEstadoPedido(string identificador)
+        {
+            List<EstadoPedidoDTO> respuesta = await Repository.GetEstadoPedido(identificador);
+
+            if (respuesta.Count() ==0)
+            {
+                return NotFound(new EstadoPedidoDTO());
+            }
+            EstadoPedidoDTO estado = respuesta.First();
+
+            return Ok(estado);
+
+        }
+
     }
 }
