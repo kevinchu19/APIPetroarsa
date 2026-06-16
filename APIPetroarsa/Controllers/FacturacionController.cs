@@ -134,22 +134,26 @@ namespace ApiPetroarsa.Controllers
 
         }
 
-        [HttpGet]
-
+        [HttpPost]
         [Route("estado")]
-        public async Task<ActionResult<EstadoPedidoDTO>> GetEstadoPedido(string identificador)
+        public async Task<ActionResult<List<EstadoPedidoDTO>>> GetEstadosPedidos([FromBody] List<string> identificadores)
         {
-            List<EstadoPedidoDTO> respuesta = await Repository.GetEstadoPedido(identificador);
-
-            if (respuesta.Count() ==0)
+            if (identificadores == null || !identificadores.Any())
             {
-                return NotFound(new EstadoPedidoDTO());
+                return BadRequest("La lista de identificadores no puede estar vacía.");
             }
-            EstadoPedidoDTO estado = respuesta.First();
 
-            return Ok(estado);
+            List<EstadoPedidoDTO> respuesta = await Repository.GetEstadosPedidos(identificadores);
 
+            // Condición: Si NINGUNO se encontró (todos son "No Encontrado" o la lista vino vacía)
+            if (respuesta == null || respuesta.All(x => x.Estado == "No Encontrado"))
+            {
+                // Mantiene el comportamiento original devolviendo NotFound con un objeto vacío o mensaje
+                return NotFound(new List<EstadoPedidoDTO>());
+            }
+
+            // Si encontró al menos uno, devuelve el array completo (incluyendo los marcados como "No Encontrado")
+            return Ok(respuesta);
         }
-
     }
 }

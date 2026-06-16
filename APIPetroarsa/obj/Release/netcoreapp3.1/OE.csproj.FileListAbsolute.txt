@@ -334,3 +334,4 @@ C:\Users\ktchubinsky\source\repos\APIPetroarsa\APIPetroarsa\obj\Release\netcorea
 C:\Users\ktchubinsky\source\repos\APIPetroarsa\APIPetroarsa\obj\Release\netcoreapp3.1\OE.dll
 C:\Users\ktchubinsky\source\repos\APIPetroarsa\APIPetroarsa\obj\Release\netcoreapp3.1\OE.pdb
 C:\Users\ktchubinsky\source\repos\APIPetroarsa\APIPetroarsa\obj\Release\netcoreapp3.1\OE.genruntimeconfig.cache
+C:\Users\ktchubinsky\source\repos\APIPetroarsa\APIPetroarsa\obj\Release\netcoreapp3.1\OE.csproj.AssemblyReference.cache

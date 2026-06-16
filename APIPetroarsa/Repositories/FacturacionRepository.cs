@@ -171,14 +171,25 @@ namespace ApiPetroarsa.Repositories
             }
         }
 
-        public async Task<List<EstadoPedidoDTO>> GetEstadoPedido(string identi)
+        public async Task<List<EstadoPedidoDTO>> GetEstadosPedidos(List<string> identificadores)
         {
-            List <EstadoPedidoDTO> response = new List<EstadoPedidoDTO>();
+            List<EstadoPedidoDTO> response = new List<EstadoPedidoDTO>();
+            string identisCsv = string.Join(",", identificadores);
 
-            response.AddRange(await ExecuteStoredProcedure<EstadoPedidoDTO>("SM_SP_SF_ESTADOPEDIDO",
-                                                                            new Dictionary<string, object>{
-                                                                                { "@IDENTI", identi}
-                                                                            }));
+            // CAMBIO: Usar 'var' para que C# infiera el tipo correcto automáticamente de la base de datos
+            var resultadoDb = await ExecuteStoredProcedure<EstadoPedidoDTO>("SM_SP_SF_ESTADOPEDIDO",
+                                new Dictionary<string, object>{
+                            { "@identi", identisCsv }
+                                });
+
+            foreach (var item in resultadoDb)
+            {
+                if (string.IsNullOrEmpty(item.Estado))
+                {
+                    item.Estado = "No Encontrado";
+                }
+                response.Add(item);
+            }
 
             return response;
         }

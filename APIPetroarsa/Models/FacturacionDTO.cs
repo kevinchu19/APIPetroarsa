@@ -41,6 +41,7 @@ namespace ApiPetroarsa.Models
 
     public class EstadoPedidoDTO
     {
+        public string Identificador { get; set; }
         public string Estado { get; set; }
     }
 
